@@ -1,0 +1,56 @@
+﻿@model ML.Movie
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Peliculas</h1>
+
+<link rel="stylesheet" type="text/css" href="../wwwroot/css/Movie.scss">
+
+<div class="container">
+    <div class="row">
+
+        @foreach (ML.Movie movie in Model.Movies)
+        {
+            <div class="card">
+                <div class="card__inner">
+                    <header class="card__header">
+                        <nav class="card__nav">
+                            <ul class="list list--nav">
+                                <li><a href="#">Movie</a></li>
+                                <li><a href="#">Trivia</a></li>
+                                <li><a href="#">Reviews</a></li>
+                            </ul>
+                        </nav>
+                    </header>
+
+                    <main class="card__body">
+
+                        <div class="card__info">
+                            <h1 class="card__title">@movie.Titulo</h1>
+
+                            <p class="card__slug">@movie.Descripcion</p>
+
+                            <button class="card__btn" value="Watch trailer">Watch trailer</button>
+
+                            <div class="card__rating">
+                                @movie.Idioma
+                            </div>
+                        </div>
+                    </main>
+
+                    <footer class="card__footer">
+                        <ul class="list list--info">
+                            <li>2016</li>
+                            <li>122 min</li>
+                            <li>Action | Sci-Fi</li>
+                        </ul>
+                    </footer>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
