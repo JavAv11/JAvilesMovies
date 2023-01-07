@@ -1,10 +1,10 @@
 ﻿@model ML.Movie
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Popular";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Peliculas</h1>
+<h1>Popular</h1>
 
 <link rel="stylesheet" type="text/css" href="~/css/movie.css">
 <head>
@@ -27,7 +27,6 @@
                         <div class="card-block">
                             <h5 class="card-title">@movie.Titulo</h5>
                             <p class="card-text">@movie.Descripcion</p>
-                            <p class="visually-hidden">@movie.IdMovie</p>
                             <p class="card-text"><small class="text-muted">@movie.Idioma</small></p>
                         </div>
                     </div>
@@ -38,9 +37,9 @@
                         <div class="card-block text-center">
                             <h4 class="card-title">Rating</h4>
                             <p class="card-text"><a href="#" class="rating">@movie.Ranking/10</a></p>
-                            <a href="@Url.Action("AddFavoritMovie", "Movie", new { IdMovie = movie.IdMovie, Favorite=false})" class="btn orange"> <i class="fa-solid fa-face-grin-hearts fa-beat" style="color:aqua"></i>  Eliminar de Favoritos </a>
+                            <a href="@Url.Action("AddFavoritMovie", "Movie", new { IdMovie = movie.IdMovie, Favorite=true})" class="btn orange"> <i class="fa-solid fa-face-grin-hearts fa-beat" style="color:aqua"></i>  Favorit </a>
                         </div>
-                        <img class="movie" src="@movie.Imagen" alt="back-img">v
+                        <img class="movie" src="@movie.Imagen" alt="back-img">
                     </div>
                     <!-- End Card Back -->
                 </div>
@@ -50,5 +49,3 @@
         </div>
     }
 </body>
-
-
