@@ -1,0 +1,48 @@
+﻿@model ML.Cine
+@{
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Cines</h1>
+<div class="container">
+    <div class="row">
+        <div style="float:right">
+            @Html.ActionLink("Agregar","Form","Cine", htmlAttributes: new{@class="btn btn-success"})
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Editar</th>
+                <th>IdCine</th>
+                <th>Cine</th>
+                <th>Direccion</th>
+                <th>IdZona</th>
+                <th>Zona</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (ML.Cine cine in Model.Cines)
+            {
+                <tr>
+                    <td class="text-center"><a class="btn btn-warning glyphicon-edit" href="@Url.Action("Form","Cine",new {IdCine=cine.IdCine})"></a></td>
+                    <td >@cine.IdCine</td>
+                    <td>@cine.Nombre</td>
+                    <td>@cine.Direccion</td>
+                    <td>@cine.Zona.IdZona</td>
+                    <td>@cine.Zona.Descripcion</td>
+                    <td class="text-center"><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Cine", new { IdCine = cine.IdCine })" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a></td>
+                </tr>
+
+            })
+
+        </tbody>
+    </table>
+</div>
+
