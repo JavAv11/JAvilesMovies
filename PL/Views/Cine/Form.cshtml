@@ -32,7 +32,7 @@
         </div>
         <div class="col-md-3">
             @Html.LabelFor(model => model.Direccion)
-            @Html.TextBoxFor(model=> model.Direccion, new{ diseabled="disabled", id="txtDireccion", @class="form-control "})
+            @Html.TextBoxFor(model=> model.Direccion, new{  id="txtDireccion", @class="form-control", disabled="disabled"})
             @Html.ValidationMessageFor(model => model.Direccion)
         </div>
         <div class="col-md-3">
