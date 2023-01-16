@@ -26,7 +26,7 @@ namespace BL
                         foreach (var obj in query)
                         {
                             ML.Cine cine = new ML.Cine();
-                            cine.IdCine = obj.IdCine;
+                            cine.IdCine = obj.IdCine.Value;
                             cine.Nombre = obj.Nombre;
                             cine.Direccion = obj.Direccion;
                             cine.Venta = obj.Venta.Value;
@@ -64,7 +64,7 @@ namespace BL
                     {
                         ML.Cine cine = new ML.Cine();
 
-                        cine.IdCine = query.IdCine;
+                        cine.IdCine = query.IdCine.Value;
                         cine.Nombre = query.Nombre;
                         cine.Direccion = query.Direccion;
                         cine.Venta = query.Venta.Value;
@@ -170,5 +170,9 @@ namespace BL
             }
             return result;
         }
+
+
+       
+
     }
 }

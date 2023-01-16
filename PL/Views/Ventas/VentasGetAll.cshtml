@@ -1,0 +1,46 @@
+﻿@model ML.Cine
+
+@{
+    ViewData["Title"] = "VentasGetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Ventas</h1>
+
+
+@foreach (ML.Cine cine in Model.Cines)
+{
+    @cine.IdCine
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+}
+
+
+
+<script type="text/javascript">
+    window.onload = function () {
+        var chart = new CanvasJS.Chart("chartContainer",
+            {
+                title: {
+                    text: "Controlling Inner Radius of Doughnut Chart",
+                },
+                data: [
+                    {
+                        type: "doughnut",
+                        indexLabelPlacement: "outside",
+                        radius: "90%",
+                        innerRadius: "75%",  //change the innerRadius here.
+                        dataPoints: [
+                            { x: 10, y: 71, label: "Norte" },
+                            { x: 20, y: 55, label: "Sur" },
+                            { x: 30, y: 50, label: "Este" },
+                            { x: 40, y: 125, label: "Oeste" }
+                        ]
+                    }
+                ]
+            });
+
+        chart.render();
+    }
+</script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+

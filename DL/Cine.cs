@@ -5,7 +5,7 @@ namespace DL;
 
 public partial class Cine
 {
-    public int IdCine { get; set; }
+    public int? IdCine { get; set; }
 
     public string? Nombre { get; set; }
 
@@ -20,5 +20,7 @@ public partial class Cine
     //Agregadas
 
     public string Zonas { get; set; }
+
+    //public int Ventas { get; set; }
 
 }

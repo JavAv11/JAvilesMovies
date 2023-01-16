@@ -12,5 +12,7 @@ namespace ML
         public string Descripcion { get; set;}
 
         public List<object>Zonas { get; set; }
+
+        public int TotalSum { get; set; }
     }
 }

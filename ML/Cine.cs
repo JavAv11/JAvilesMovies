@@ -12,6 +12,7 @@ namespace ML
         public string Nombre { get; set; }
         public string Direccion { get; set; }
         public int Venta { get; set; }
+
         public ML.Zona Zona { get; set; }
 
         public List<object>Cines { get; set; }
