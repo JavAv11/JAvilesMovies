@@ -5,42 +5,57 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Ventas</h1>
+
+<title>Ventas</title>
+
+<div class="row">
+    <div class="col-md-3">
+        @Html.TextBoxFor(model=>model.VentaN, new {id= "lblNorte"})
+
+        @Html.TextBoxFor(model=>model.VentaS, new {id= "lblSur"})
+
+        @Html.TextBoxFor(model=>model.VentaE, new {id= "lblEste"})
+
+        @Html.TextBoxFor(model=>model.VentaO, new {id= "lblOeste"})
+    </div>
+</div>
 
 
-@foreach (ML.Cine cine in Model.Cines)
-{
-    @cine.IdCine
-    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<div id="chartContainer" style="width: 100%; height: 300px"></div>
+
+@section Scripts{
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+    <script>
+        window.onload = function () {
+            var norte=document.getElementById("lblNorte").value;
+            var sur = document.getElementById("lblSur").value;
+            var este=document.getElementById("lblEste").value;
+            var oeste = document.getElementById("lblOeste").value;
+            var options = {
+                animationEnabled: true,
+                title: {
+                    text: "Ventas"
+                },
+                data: [{
+                    type: "doughnut",
+                    innerRadius: "40%",
+                    showInLegend: true,
+                    legendText: "{label}",
+                    indexLabel: "{label}: #percent%",
+                    dataPoints: [
+                        { label: "Norte", y: 15 },
+                        { label: "Sur", y: 20 },
+                        { label: "Este", y: 35 },
+                        { label: "Oeste", y: 5 }
+                    ]
+                }]
+            };
+            $("#chartContainer").CanvasJSChart(options);
+
+        }
+    </script>
 }
 
 
-
-<script type="text/javascript">
-    window.onload = function () {
-        var chart = new CanvasJS.Chart("chartContainer",
-            {
-                title: {
-                    text: "Controlling Inner Radius of Doughnut Chart",
-                },
-                data: [
-                    {
-                        type: "doughnut",
-                        indexLabelPlacement: "outside",
-                        radius: "90%",
-                        innerRadius: "75%",  //change the innerRadius here.
-                        dataPoints: [
-                            { x: 10, y: 71, label: "Norte" },
-                            { x: 20, y: 55, label: "Sur" },
-                            { x: 30, y: 50, label: "Este" },
-                            { x: 40, y: 125, label: "Oeste" }
-                        ]
-                    }
-                ]
-            });
-
-        chart.render();
-    }
-</script>
-<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 

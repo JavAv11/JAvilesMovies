@@ -13,6 +13,6 @@ namespace ML
 
         public List<object>Zonas { get; set; }
 
-        public int TotalSum { get; set; }
+     
     }
 }

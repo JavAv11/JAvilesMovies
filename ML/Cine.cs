@@ -16,5 +16,12 @@ namespace ML
         public ML.Zona Zona { get; set; }
 
         public List<object>Cines { get; set; }
+
+
+        public double TotalSum { get; set; }
+        public double VentaN { get; set; }
+        public double VentaS { get; set; }
+        public double VentaE { get; set; }
+        public double VentaO { get; set; }
     }
 }

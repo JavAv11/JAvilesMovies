@@ -164,15 +164,70 @@ namespace BL
             }
             catch (Exception ex)
             {
-                result.Correct= false;
+                result.Correct = false;
                 result.ErrorMessage = ex.Message;
                 result.Ex = ex;
             }
             return result;
         }
 
+        public static ML.Result SumTotal()
+        {
+            ML.Result result = new ML.Result();
+            try
+            {
+                using (DL.JavilesCineContext context = new DL.JavilesCineContext())
+                {
+                    var query = context.Cines.FromSqlRaw("[PuntosDeVentaGetAll]").ToList();
+                    result.Objects = new List<object>();
 
-       
+                    
+                    if (query != null)
+                    {
+                        foreach (var obj in query)
+                        {
+                            ML.Cine cine = new ML.Cine();
+                            cine.IdCine = obj.IdCine.Value;
+                            cine.Nombre = obj.Nombre;
+                            cine.Direccion = obj.Direccion;
+                            cine.Venta = obj.Venta.Value;
 
+                            cine.Zona = new ML.Zona();
+                            cine.Zona.IdZona = obj.IdZona.Value;
+                            cine.Zona.Descripcion = obj.Zonas;
+                            if (cine.Zona.Descripcion == "Norte")
+                            {
+                                cine.VentaN =  cine.Venta;
+                            }
+                            else if (cine.Zona.Descripcion == "Sur")
+                            {
+                                cine.VentaS =  cine.Venta;
+                            }
+                            else if (cine.Zona.Descripcion == "Este")
+                            {
+                                cine.VentaE = cine.Venta;
+                            }
+                            else
+                            {
+                                cine.VentaO = cine.Venta;
+                            }
+                            
+                           
+                            result.Objects.Add(cine);
+
+                        }
+                        result.Correct = true;
+                    }
+                    else { result.Correct = false; }
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Correct = false;
+                result.ErrorMessage = ex.Message;
+                result.Ex = ex;
+            }
+            return result;
+        }
     }
 }
